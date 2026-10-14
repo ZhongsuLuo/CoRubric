@@ -1,0 +1,585 @@
+{
+  "schema_version": "structured-rubric-v1",
+  "title": "“原子吸收光谱法测定饮用水中的镁含量”实验评分标准",
+  "background": "",
+  "language": "zh",
+  "base_score": 100,
+  "criteria": [
+    {
+      "criteria_id": "1",
+      "criteria_name": "报告标题或姓名",
+      "description": "要求：实验报告需包含可识别的报告标题或学生姓名。\n扣分规则：若缺失报告标题或姓名，扣4分；若两者均存在且清晰可辨，得满分。",
+      "original_description": "实验报告标题或姓名：缺失扣分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [
+        {
+          "example_input": "浙江大学 实验报告 姓名: AL MULFI, NAWAF MOAHMMED S 学号: 3240300139 课程名称: 大学化学实验（A） 指导老师: 赵玲丽 实验名称: 原子吸收光谱法测定水中 Mg 含量 实验类型: 综合性 专业: 化学工程",
+          "example_output_description": "Uninduced grading",
+          "example_output_score": 4
+        },
+        {
+          "example_input": "实验报告 专业：化学工程与工艺 姓名：王金杰 学号：3240101860 日期：2025.05.26 地点：紫金港化学实验中心 227 左 课程名称：大学化学实验（A） 指导老师：赵玲丽 实验名称：原子吸收光谱法测定饮用水中的镁含量 同组学生姓名：蒋烁、张圣杰、蔡凯政",
+          "example_output_description": "Uninduced grading",
+          "example_output_score": 4
+        },
+        {
+          "example_input": "浙江大学 实验报告 姓名: AL MULFI, NAWAF MOAHMMED S 学号: 3240300139 课程名称: 大学化学实验（A） 指导老师: 赵玲丽 实验名称: 原子吸收光谱法测定水中 Mg 含量 实验类型: 综合性 专业: 化学工程",
+          "example_output_description": "",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "1.1",
+          "summary": "报告标题或姓名",
+          "full_credit_condition": "实验报告中包含报告标题或姓名，可识别报告归属。",
+          "deduction_rules": [
+            {
+              "rule_id": "1.1.missing",
+              "condition": "实验报告标题或姓名缺失。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "2",
+      "criteria_name": "朗伯比尔定律与公式",
+      "description": "要求：必须同时提及定量依据为朗伯-比尔定律，并写出相关公式（A=Kc、A=εbc 等等价表达均可）。\n扣分规则：未提及定律或未写出公式，均扣4分。",
+      "original_description": "定量依据须同时包含朗伯-比尔定律及相关公式（如 A=Kc 或 A=εbc）；任一项缺失均扣4分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [
+        {
+          "example_input": "原子吸收光谱法的定量基础是朗伯-比尔定律，吸光度 A 与溶液浓度 C 成正比（A=KC），常用方法包括标准曲线法和标准加入法。",
+          "example_output_description": "同时提及朗伯-比尔定律和公式 A=KC，满足满分条件。",
+          "example_output_score": 4
+        },
+        {
+          "example_input": "根据朗伯-比耳定律：A = εbc，其中 A 为吸光度，ε 为摩尔吸收系数，b 为比色皿厚度（cm），c 为溶液浓度。",
+          "example_output_description": "同时提及朗伯-比尔定律和公式 A=εbc，满足满分条件。",
+          "example_output_score": 4
+        },
+        {
+          "example_input": "实验定量依据为朗伯-比尔定律，吸光度与浓度的关系可写为 A=Kc。",
+          "example_output_description": "同时提及朗伯-比尔定律和公式 A=Kc，满足满分条件。",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "2.1",
+          "summary": "朗伯-比尔定律与公式",
+          "full_credit_condition": "必须同时提及定量依据为朗伯-比尔定律，并写出公式 A=Kc、A=εbc 或其他等价数学表达。",
+          "deduction_rules": [
+            {
+              "rule_id": "2.1.missing",
+              "condition": "未提及朗伯-比尔定律，或未写出任何相关定量公式。",
+              "deduct": 4,
+              "note": "定律与公式必须同时出现才可得满分；公式形式可为 A=Kc、A=εbc 或其他等价表达。"
+            }
+          ],
+          "max_deduction": null,
+          "aggregation": null,
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "3",
+      "criteria_name": "原子吸收原理",
+      "description": "要求：需说明原子吸收光谱法是测定基态气态物质对特征谱线的吸收而建立的方法。\n扣分规则：未提及则扣4分。",
+      "original_description": "AAS原理：须提及原子吸收光谱是测定基态气态物质对于特征谱线的 absorption 建立的方法，提及给分，缺失扣分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "3.1",
+          "summary": "原子吸收光谱法原理",
+          "full_credit_condition": "说明原子吸收光谱法通过测定基态气态物质/原子对特征谱线的吸收建立分析方法。",
+          "deduction_rules": [
+            {
+              "rule_id": "3.1.missing",
+              "condition": "未提及该原理。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "4",
+      "criteria_name": "标准曲线法与标准加入法",
+      "description": "要求：需正确提及标准曲线法和标准加入法的原理特点。\n扣分规则：缺失或存在错误则扣4分。",
+      "original_description": "两种分析方法：标准曲线法、标准加入法的原理特点，只要提及没有错误就给分，缺失或错误扣分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "4.1",
+          "summary": "标准曲线法与标准加入法原理特点",
+          "full_credit_condition": "正确提及标准曲线法和标准加入法的原理特点，且无明显错误。",
+          "deduction_rules": [
+            {
+              "rule_id": "4.1.missing_or_wrong",
+              "condition": "缺失两种方法的原理特点，或表述存在明显错误。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "5",
+      "criteria_name": "仪器构造简图",
+      "description": "要求：需包含仪器构造简图（含光源、原子化器、单色器、检测器），字＋箭头形式也可接受。\n扣分规则：缺失则扣4分。",
+      "original_description": "仪器构造：有仪器构造简图（含光源，原子化器，单色器，检测器），字＋箭头的简图也给分，缺失扣分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [
+        {
+          "example_input": "光源（空心阴极灯）：发射待测元素特征谱线，要求强度大、稳定性高。\n\n > **[Image]** A schematic diagram of a hollow cathode lamp used in atomic absorption spectroscopy, featuring a cylindrical glass envelope with a narrower quartz window at one end and a multi-pin base labeled “灯座” (lamp socket) at the other; inside, a coiled filament labeled “阳极” (anode) is positioned near the base, while a cylindrical hollow structure labeled “空心阴极（内壁为待测金属）” (hollow cathode, inner wall made of element to be measured) extends toward the quartz window; the entire interior is filled with inert gas as indicated by the label “内充惰性气体（氖或氩）” (filled with inert gas (neon or argon)); the quartz window is labeled “石英窗” (quartz window); below the diagram, a caption reads “阴极由待测元素的金属所制成” (cathode is made of metal of the element to be measured), emphasizing that the cathode material corresponds to the analyte element.\n> *Source: images/p1_crop0.png*\n\n原子化器（火焰原子化器）：将试样转化为基态原子蒸气，常用空气 - 乙炔火焰（最高温度 2600K）。\n\n> **[Image]** A schematic diagram of an atomic absorption spectrometer’s nebulizer and burner system shows a conical flask labeled “试样溶液” (sample solution) connected via a “毛细管” (capillary tube) to a “喷雾器” (nebulizer), which introduces the sample into a horizontal chamber labeled “雾化室” (nebulization chamber); within this chamber, “撞击球” (impact ball) is positioned to break up the aerosol, while “助燃气（空气）” (support gas (air)) enters from below and “燃气（乙炔）” (fuel gas (acetylene)) enters from above; waste liquid drains downward from the bottom of the nebulization chamber as “废液” (waste liquid); downstream, “扰流器” (baffle/flow disruptor) with triangular notches directs the aerosol toward the “燃烧器” (burner), where it mixes with fuel and support gases and is ignited to produce a stable “火焰” (flame) at the top outlet; all component labels are enclosed in rectangular boxes except for “撞击球” and “废液”, which point directly to their respective features.\n\n> *Source: images/p1_crop1.png*\n\n原子吸收分光光度计的结构和类型:\n\n基本光路结构组成\n\n> **[Image]** A schematic diagram of two different optical instrument setups is presented, labeled at the top left as “基本光路结构组成” (Basic Optical Path Structure Composition), with annotations above the upper diagram indicating “光栅” (Grating) and “光电倍增管” (Photomultiplier Tube), and vertical text on the right side reading “原子吸收” (Atomic Absorption) aligned with the upper diagram and “紫外可见” (Ultraviolet-Visible) aligned with the lower diagram. The upper diagram depicts an atomic absorption spectrometer layout: starting from the left, a rectangular box labeled “光源” (Light Source) connects to a funnel-shaped component labeled “原子化器” (Atomizer), which then connects to a rectangular box labeled “单色器” (Monochromator), followed by another rectangular box labeled “检测器” (Detector), and finally ending with a square box containing a stylized needle gauge icon labeled “显示装置” (Display Device). The lower diagram illustrates a UV-Vis spectrophotometer layout: beginning with a circular symbol with a cross inside labeled “光源” (Light Source), it connects to a rectangular box labeled “单色器” (Monochromator), then to a rectangular box labeled “比色皿” (Cuvette), followed by a rectangular box labeled “检测器” (Detector), and concluding with a square box containing the same stylized needle gauge icon labeled “显示装置” (Display Device). All components are connected by solid horizontal lines indicating the optical path.\n\n> *Source: images/p2_crop0.png*\n\n光路特点: 单色器在火焰(原子化器)之后,Why?\n消除火焰中的其它波长光的干扰",
+          "example_output_description": "有仪器构造简图（含光源，原子化器，单色器，检测器）",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "5.1",
+          "summary": "仪器构造简图",
+          "full_credit_condition": "包含仪器构造简图，至少覆盖光源、原子化器、单色器、检测器；字加箭头形式也可接受。",
+          "deduction_rules": [
+            {
+              "rule_id": "5.1.missing",
+              "condition": "缺失仪器构造简图。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "6",
+      "criteria_name": "实验原理概念错误",
+      "description": "要求：实验原理部分不得出现任何概念性错误。\n扣分规则：存在概念性错误则扣4分。",
+      "original_description": "实验原理任何概念性错误，扣分。",
+      "max_score": 4,
+      "section": "一、实验原理",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "6.1",
+          "summary": "实验原理概念正确性",
+          "full_credit_condition": "实验原理部分无概念性错误。",
+          "deduction_rules": [
+            {
+              "rule_id": "6.1.concept_error",
+              "condition": "实验原理部分存在概念性错误。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "7",
+      "criteria_name": "Sr加入量优化体积",
+      "description": "要求：数据记录与处理及结果与讨论中，需根据仪器生成数据图(现已被转换为# Thermo SCIENTIFIC章节下的文字和图片，只要是在这个章节下的都是原图中的内容，即如果有三个# Thermo SCIENTIFIC，则代表包含三张仪器生成数据图)计算并给出水样中Sr加入量的优化体积（应为0–4 mL之间的某一数值）。\n扣分规则：缺失则扣4分。",
+      "original_description": "Sr优化量：数据记录与处理和结果与讨论中，需要根据仪器生成数据图中数据进行计算，给出水样中Sr加入量优化体积，根据实验结果应为0-4mL某一数值，缺失扣分。",
+      "max_score": 4,
+      "section": "二、数据记录与处理、结果与讨论",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "7.1",
+          "summary": "Sr 加入量优化体积",
+          "full_credit_condition": "根据仪器生成数据图计算并给出水样中 Sr 加入量的优化体积，结果应为 0–4 mL 之间的某一数值。",
+          "deduction_rules": [
+            {
+              "rule_id": "7.1.missing",
+              "condition": "缺失 Sr 加入量优化体积。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "8",
+      "criteria_name": "水样镁浓度结果",
+      "description": "要求：需给出标准曲线法和标准加入法两种方法分析出的水样中镁浓度（预期约为2 mg/L）。\n扣分规则：任一方法结果缺失或计算错误，各扣4分（共最多扣8分，但按本条规则每项独立计，此处按单个扣分点处理，故设为4分；根据总则‘每个扣分点独立计算’，若原文明确‘各扣1次分’且每次4分，则此处为两个独立项。但原文表述为‘两种方法计算结果错误或缺失各扣1次分’，结合评分细则‘每个扣分点...扣4分’，应视为两个独立扣分点。然而本结构仅允许一个criteria_id对应一个描述。因此，按原文合并为一项，最大扣分为4分，代表任一方法出错即触发一次扣分。但原文说‘各扣1次分’，意味着可能两次扣分。然而输出schema要求每个criteria_id为独立扣分点。为严格遵循原文‘各扣1次分’，应拆分为两项。但原文在此处为一句，且后续说明‘不管出现几次有效数字位数错误都只扣1次分’，暗示此处可能为一次判断。综合判断：原文意图为两种方法各自独立判断，但因格式限制，此处按整体处理，最大扣4分，代表至少一种方法缺失或错误即扣分。如需精确，应拆分，但原文未明确分开描述。故保留为一项。）\n注：根据评分细则，此处若缺失或错误，扣4分。",
+      "original_description": "水样中镁浓度：给出两种方法分析出的水样中镁浓度（约2mg/L左右，同学们不知道这个浓度，结果与之对比差别太大则错误），两种方法计算结果错误或缺失各扣1次分。",
+      "max_score": 8,
+      "section": "二、数据记录与处理、结果与讨论",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "8.1",
+          "summary": "标准曲线法水样镁浓度",
+          "full_credit_condition": "给出标准曲线法分析出的水样镁浓度，结果约为 2 mg/L，且计算合理。",
+          "deduction_rules": [
+            {
+              "rule_id": "8.1.missing_or_wrong",
+              "condition": "标准曲线法结果缺失或计算错误；若与约 2 mg/L 差别过大，视为错误。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        },
+        {
+          "point_id": "8.2",
+          "summary": "标准加入法水样镁浓度",
+          "full_credit_condition": "给出标准加入法分析出的水样镁浓度，结果约为 2 mg/L，且计算合理。",
+          "deduction_rules": [
+            {
+              "rule_id": "8.2.missing_or_wrong",
+              "condition": "标准加入法结果缺失或计算错误；若与约 2 mg/L 差别过大，视为错误。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 8,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "9",
+      "criteria_name": "有效数字位数",
+      "description": "要求：最终结果的有效数字位数应为2位。\n扣分规则：有效数字位数错误，无论出现几次，仅扣4分一次。",
+      "original_description": "有效数字：有效数字位数最终结果应为2位，不对扣1次分，不管出现几次有效数字位数错误都只扣1次分。",
+      "max_score": 4,
+      "section": "二、数据记录与处理、结果与讨论",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "9.1",
+          "summary": "最终结果有效数字",
+          "full_credit_condition": "最终结果保留 2 位有效数字。",
+          "deduction_rules": [
+            {
+              "rule_id": "9.1.wrong_sigfig",
+              "condition": "最终结果有效数字位数错误；无论出现几次，仅扣一次。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "10",
+      "criteria_name": "两种方法结论",
+      "description": "要求：需对标准加入法和标准曲线法两种方法的结果给出结论——若回归方程拟合度≥0.99，应得出标准加入法结果更可靠的结论。\n扣分规则：未提及则扣4分。",
+      "original_description": "两种方法分析结果的结论：对标准加入法、标准曲线法两种方法结果的给出结论——如回归方程拟合度0.99以上的话，应得出标准加入法分析结果更可靠的结论。提及即得分，缺失扣分，。",
+      "max_score": 4,
+      "section": "二、数据记录与处理、结果与讨论",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "10.1",
+          "summary": "两种方法结果结论",
+          "full_credit_condition": "对标准加入法和标准曲线法结果给出结论；若回归方程拟合度 ≥0.99，应得出标准加入法结果更可靠的结论。",
+          "deduction_rules": [
+            {
+              "rule_id": "10.1.missing",
+              "condition": "未提及两种方法分析结果的结论。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "11",
+      "criteria_name": "拟合度不足误差分析",
+      "description": "要求：若回归方程拟合度不足0.99，需进行误差分析。\n扣分规则：未提及则扣4分。",
+      "original_description": "误差分析：如回归方程拟合度不足0.99，需进行误差分析，提及即得分，缺失扣分。",
+      "max_score": 4,
+      "section": "二、数据记录与处理、结果与讨论",
+      "few_shot_examples": [
+        {
+          "example_input": "3. **标准曲线法**\n\n配制含不同浓度标准液的系列溶液（0、0.20、0.40、0.60、0.80、1.00 µg/mL），均加入 0.5mL Sr (II)，定容后测吸光度，绘制 A−C 曲线（回归方程：A=0.34934C+0.0111，R=0.9954）。\n\n4. **标准加入法**\n\n在 5 个 25mL 容量瓶中加入 5.00mL 水样，分别加入 0、0.50、1.00、1.50、2.00mL 标准液，定容后测吸光度，绘制外推曲线（回归方程：Y=0.32569x+0.0988，R²=0.9940）。",
+          "example_output_description": "回归方程拟合度大于0.99因此不需要进行误差分析，得4分",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "11.1",
+          "summary": "拟合度不足时误差分析",
+          "full_credit_condition": "当回归方程拟合度不足 0.99 时，进行误差分析；若拟合度均 ≥0.99，可说明不需要误差分析。",
+          "deduction_rules": [
+            {
+              "rule_id": "11.1.missing_when_needed",
+              "condition": "拟合度不足 0.99 但未进行误差分析。",
+              "deduct": 4,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": "任一相关回归方程拟合度不足 0.99；若均不低于 0.99，不应扣分。"
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "12",
+      "criteria_name": "四大系统与异同",
+      "description": "题目：原子吸收分光光度计的四大系统是什么?与紫外-可见分光光度计比较，两者有何异同点?\n要求：答案需包含：(1) 四大系统为光源系统、原子化系统、分光系统、检测系统，并简要说明各系统功能；(2) 比较部分需指出两者均基于朗伯-比尔定律，但AAS测基态原子需原子化，UV-Vis测分子/离子在溶液中；AAS用锐线光源（如空心阴极灯），UV-Vis用连续光源；AAS分光系统在原子化器后，UV-Vis在光源后。\n扣分规则：缺失整个回答扣4分；回答不完整扣2分。",
+      "original_description": "1. 原子吸收分光光度计的四大系统是什么?与紫外-可见分光光度计比较，两者有何异同点?\n答案：原子吸收分光光度计的四大系统包括光源系统、原子化系统、分光系统和检测系统。光源系统通常使用空心阴极灯，提供特定元素的特征光谱；原子化系统负责将样品中的待测元素转化为基态原子，常见的有火焰原子化器和石墨炉原子化器；分光系统由单色器组成，用于分离出待测元素的特征波长；检测系统则通过光电倍增管或CCD检测器将光信号转换为电信号进行测量。\n与紫外-可见分光光度计相比，两者均基于朗伯-比尔定律，利用物质对光的吸收进行定量分析，但存在显著差异。原子吸收分光光度计测量的是基态原子的吸收，需要高温原子化过程，而紫外-可见分光光度计测量的是分子或离子的吸收，通常在溶液状态下直接测定。原子吸收使用锐线光源（如空心阴极灯），且需针对不同元素更换特定光源，而紫外-可见分光光度计采用连续光源（如氘灯、钨灯），通过单色器选择波长。此外，原子吸收分光系统在原子化器后面，而紫外-可见在光源后面",
+      "max_score": 4,
+      "section": "三、思考题参考答案",
+      "few_shot_examples": [
+        {
+          "example_input": "**Q1：原子吸收分光光度计的四大系统是什么？与紫外-可见光分光光度计比较，两者有什么异同？**\n\n**A1：** 原子吸收分光光度计的四大系统分别为：  \n光源系统，原子化系统，分光系统，检测系统。\n\n**相同点：**  \na. 均依据样品对入射光的吸收来进行测量。都是先对处理后的样品进行分析，样品吸收来自光源的某一特征谱线，再通过分光系统进行分离，最后对剩余特征谱线进行测量。  \nb. 都符合朗伯 - 比尔定律。该定律描述了物质对光的吸收程度与吸光物质的浓度和液层厚度之间的定量关系，是两种仪器进行定量分析的理论基础。\n\n**不同点：**  \na. 吸收机理不同：原子吸收分光光度计是基于原子对光的吸收；而可见光分光光度计是基于分子对光的吸收。  \nb. 单色器与吸收器不同：原子吸收分光光度计的单色器在原子化器之后，主要作用是分离出待测元素的特征谱线；其吸收器为原子化器，实现原子化过程。可见光分光光度计的单色器在吸收池之前，用于将光源发出的复合光分解为单色光；吸收器为比色皿，盛放样品溶液。  \nc. 所需光源不同：原子吸收分光光度计需要锐线光源，即光源发射出的谱线与待测元素的吸收谱线中心频率相同且半宽度很窄，以保证测量的灵敏度和准确性；可见光分光光度计需要连续光源，能够在一定波长范围内发出连续的光谱，以便测量不同波长下样品的吸光度。",
+          "example_output_description": "学生正确列出了原子吸收分光光度计的四大系统（光源、原子化、分光、检测系统），并指出了与紫外-可见分光光度计的若干关键异同点：均符合朗伯-比尔定律；AAS测原子、UV-Vis测分子；AAS用锐线光源、UV-Vis用连续光源；AAS单色器在原子化器后、UV-Vis在光源后。得4分",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "12.1",
+          "summary": "四大系统与 UV-Vis 异同",
+          "full_credit_condition": "回答包括四大系统及功能，并比较 AAS 与 UV-Vis 的关键异同。",
+          "deduction_rules": [
+            {
+              "rule_id": "12.1.missing_all",
+              "condition": "缺失整个回答。",
+              "deduct": 4,
+              "note": null
+            },
+            {
+              "rule_id": "12.1.incomplete",
+              "condition": "回答不完整，例如缺少四大系统、功能说明或关键异同比较之一。",
+              "deduct": 2,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "13",
+      "criteria_name": "开关空气乙炔顺序",
+      "description": "题目：开机和关机时，开、关空气和乙炔气的顺序如何?为什么?\n要求：答案需说明：开机时先开空气、再开乙炔；关机时先关乙炔、再关空气；原因是为了防止乙炔积聚爆炸，确保残余气体被吹扫。\n扣分规则：缺失整个回答扣4分；回答不完整扣2分。",
+      "original_description": "2.开机和关机时，开、关空气和乙炔气的顺序如何?为什么?\n答案：在开机和关机时，气体控制的顺序至关重要。开机时应先开空气，再开乙炔气，以避免乙炔气积聚引发爆炸风险；关机时则应先关闭乙炔气，再关闭空气，确保管路中的残余乙炔气被彻底吹扫干净。这一顺序是为了保证实验安全，防止可燃气体在仪器内残留。",
+      "max_score": 4,
+      "section": "三、思考题参考答案",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "13.1",
+          "summary": "空气乙炔开关顺序与原因",
+          "full_credit_condition": "说明开机先开空气再开乙炔；关机先关乙炔再关空气；并解释为防止乙炔积聚爆炸、吹扫残余气体。",
+          "deduction_rules": [
+            {
+              "rule_id": "13.1.missing_all",
+              "condition": "缺失整个回答。",
+              "deduct": 4,
+              "note": null
+            },
+            {
+              "rule_id": "13.1.incomplete",
+              "condition": "回答不完整，例如顺序或原因缺一部分。",
+              "deduct": 2,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "14",
+      "criteria_name": "标准加入与曲线适用范围",
+      "description": "题目：标准加入法和标准曲线法的适用范围各是什么?在使用时各应注意哪几点?\n要求：答案需说明：标准曲线法适用于基质简单、干扰少的样品，注意标准与样品基质匹配及线性范围；标准加入法适用于复杂基质，可抵消基体干扰，注意加标浓度匹配、加标点足够多。\n扣分规则：缺失整个回答扣4分；回答不完整扣2分。",
+      "original_description": "3.标准加入法和标准曲线法的适用范围各是什么?在使用时各应注意哪几点?\n答案：标准曲线法适用于样品基质简单、干扰较少的情况，通过系列标准溶液建立浓度-吸光度关系曲线进行定量。使用时需注意标准溶液与样品基质的匹配性，并确保线性范围符合要求。标准加入法则适用于复杂基质的样品，能够有效抵消基体干扰，操作时需在样品中加入已知浓度的标准溶液，通过外推法计算待测物含量。使用标准加入法时，应注意加标浓度与样品浓度的匹配，并保证加标点足够多以提高准确性。",
+      "max_score": 4,
+      "section": "三、思考题参考答案",
+      "few_shot_examples": [
+        {
+          "example_input": "**Q3: 标准加入法与标准曲线法运用范围是什么？在使用时应注意什么？**\n\n**A3:**  \n**标准加入法：** 适用于基体复杂的试样。  \n**标准曲线法：** 适用于基体简单的大批量试样。\n\n**标准加入法需注意：**  \n1) 在用作外推法时，要求相应的曲线是一条通过原点的直线。  \n2) 待测元素的标准加入浓度应适当。  \n3) 为了获得更准确的外推结果，应采用四个点来制作外推曲线。\n\n**标准曲线法需注意：**  \n1) 浓度需要适当。  \n2) 必须采用单色光照射。  \n3) 应尽量测定用的波长最好在被测样品吸收峰处。",
+          "example_output_description": "学生正确列出了原子吸收分光光度计的四大系统（光源、原子化、分光、检测系统），并指出了与紫外-可见分光光度计的若干关键异同点：均符合朗伯-比尔定律；AAS测原子、UV-Vis测分子；AAS用锐线光源、UV-Vis用连续光源；AAS单色器在原子化器后、UV-Vis在光源后。得4分",
+          "example_output_score": 4
+        }
+      ],
+      "scoring_points": [
+        {
+          "point_id": "14.1",
+          "summary": "标准加入法与标准曲线法适用范围及注意事项",
+          "full_credit_condition": "说明标准曲线法适用于基质简单、干扰少样品，注意基质匹配和线性范围；标准加入法适用于复杂基质，可抵消基体干扰，注意加标浓度匹配和加标点足够多。",
+          "deduction_rules": [
+            {
+              "rule_id": "14.1.missing_all",
+              "condition": "缺失整个回答。",
+              "deduct": 4,
+              "note": null
+            },
+            {
+              "rule_id": "14.1.incomplete",
+              "condition": "回答不完整，例如缺少某一方法适用范围或注意事项。",
+              "deduct": 2,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    },
+    {
+      "criteria_id": "15",
+      "criteria_name": "干扰因素与消除",
+      "description": "题目：原子吸收光谱法中影响测定的干扰因素有哪些?如何消除?\n要求：答案需涵盖四类干扰及消除方法：(1) 光谱干扰（谱线重叠等）—另选分析线、减小狭缝/灯电流、背景校正（氘灯/塞曼）；(2) 化学干扰（难熔化合物）—加释放剂（La、Sr）或保护剂（EDTA）；(3) 物理干扰（粘度等）—稀释或标准加入法；(4) 电离干扰—加消电离剂（K、Cs）、标准加入法或降低火焰温度。\n扣分规则：缺失整个回答扣4分；回答不完整扣2分。",
+      "original_description": "4.原子吸收光谱法中影响测定的干扰因素有哪些?如何消除?\n答案：原子吸收光谱法中的干扰主要包括光谱干扰、化学干扰、物理干扰和电离干扰。光谱干扰如谱线重叠，可通过另选分析线消除。非吸收线干扰可以通过：减小狭缝、减小灯电流、另选分析线；背景吸收可使用背景校正技术（如氘灯或塞曼效应校正）消除；化学干扰如难熔化合物的形成，可通过加入释放剂（如La、Sr）或保护剂（如EDTA）来抑制；物理干扰如溶液粘度、表面张力等差异，可通过稀释样品或标准加入法来减少；电离干扰多见于高温原子化器，可通过加入消电离剂（如K、Cs盐）、标准加入法或降低火焰温度等来抑制。",
+      "max_score": 4,
+      "section": "三、思考题参考答案",
+      "few_shot_examples": [],
+      "scoring_points": [
+        {
+          "point_id": "15.1",
+          "summary": "原子吸收干扰因素与消除方法",
+          "full_credit_condition": "涵盖光谱干扰、化学干扰、物理干扰、电离干扰四类干扰及相应消除方法。",
+          "deduction_rules": [
+            {
+              "rule_id": "15.1.missing_all",
+              "condition": "缺失整个回答。",
+              "deduct": 4,
+              "note": null
+            },
+            {
+              "rule_id": "15.1.incomplete",
+              "condition": "回答不完整，例如缺少干扰类型或消除方法。",
+              "deduct": 2,
+              "note": null
+            }
+          ],
+          "max_deduction": 4,
+          "aggregation": "max_triggered",
+          "applies_when": null
+        }
+      ],
+      "scoring_aggregation": {
+        "mode": "sum_deductions_capped",
+        "cap": 4,
+        "score_formula": "criteria_score = max_score - min(sum_triggered_deductions, max_score)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+services:
+  grading:
+    build: .
+    restart: unless-stopped
+    init: true
+    env_file: backend/.env
+    environment:
+      GRADING_PARSER_CONFIG: /app/backend/ocr/config.example.toml
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - grading-data:/app/backend/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    stop_grace_period: 60s
+
+volumes:
+  grading-data:

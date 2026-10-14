@@ -1,0 +1,56 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "eslint . --fix --cache",
+    "format": "prettier --write --experimental-cli src/",
+    "test:integration": "../.venv/bin/python ../scripts/run_global_view_simulation.py",
+    "test:e2e:import": "playwright test --config playwright.import.config.ts",
+    "test:e2e:production": "playwright test --config playwright.production.config.ts"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "katex": "^0.16.11",
+    "markdown-it": "^14.1.0",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.26"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@tsconfig/node24": "^24.0.3",
+    "@types/d3": "^7.4.3",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.10.4",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/test-utils": "^2.4.11",
+    "@vue/tsconfig": "^0.8.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.2",
+    "eslint-plugin-vue": "~10.6.2",
+    "jiti": "^2.6.1",
+    "jsdom": "^29.1.1",
+    "npm-run-all2": "^8.0.4",
+    "postcss": "^8.5.3",
+    "prettier": "3.7.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.2.2"
+  }
+}

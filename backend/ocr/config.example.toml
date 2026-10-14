@@ -1,0 +1,54 @@
+# 复制为 backend/ocr/config.local.toml 后填写凭证；不要提交真实配置。
+# 只读取这一个文件，不读取主系统 .env，也不保存含密钥的配置快照。
+[bailian]
+api_key = "" # 北京地域的百炼 API Key，需开通万擎 DeepSeek-OCR 模型权限
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+model = "vanchin/deepseek-ocr"
+prompt = "<|grounding|>Convert the document to markdown."
+max_tokens = 4096 # 上下文总长 8192；保留图像输入空间，截断会标记 partial
+dpi = 180
+page_workers = 2
+timeout_seconds = 120
+
+[docmind]
+access_key_id = "" # RAM AccessKey ID，不是百炼 Key
+access_key_secret = ""
+security_token = "" # 普通长期 AccessKey 留空；STS 临时凭证才填写
+endpoint = "docmind-api.cn-hangzhou.aliyuncs.com"
+region_id = "cn-hangzhou"
+formula_enhancement = true
+poll_seconds = 2
+max_wait_seconds = 900
+request_timeout_seconds = 120
+layout_batch_size = 100
+
+# 区域图像增强配置。当前运行器使用自己的结构化转写提示词。
+[image_description]
+model = "qwen3.8-flash" # 复用上方北京百炼 Key；更换模型时同步修改 description 费率
+enable_thinking = false # 图片描述关闭思考，减少延迟与输出 token
+prompt = "用中文描述图中可见内容，保留标题、坐标轴、单位、公式及关键数据。不推测看不清的数字；不重复长篇正文。"
+max_tokens = 1200
+
+# 2026-09-20 官方标价；仅估算，不抵扣免费额度，不等于账单。
+# 公式增强对应计费项请在首轮账单核实。负数表示未知，不按零元计算。
+[pricing]
+deepseek_input_per_million_cny = 0.216
+deepseek_output_per_million_cny = 0.216
+docmind_basic_per_page_cny = 0.02
+docmind_vlm_per_page_cny = 0.04
+# 2026-09-21：北京 qwen3.8-flash 标价，不含缓存折扣/免费额度。
+description_input_per_million_cny = 0.8
+description_output_per_million_cny = 2.7
+
+[hybrid]
+document_workers = 2 # 所有文档共享同一图片请求池
+image_workers = 4
+dpi = 180
+max_pixels = 4000000
+extract_max_tokens = 3072
+max_requests_per_document = 24 # 含重试；缓存命中不占用
+max_vlm_cny_per_document = 0.25 # 入队前保守估算预留，不是供应商账单硬限额
+
+[runtime]
+# Per-document estimated vision budget; OCR charges are separate.
+vision_budget_cny_per_document = 9.5

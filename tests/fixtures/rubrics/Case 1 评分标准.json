@@ -1,0 +1,8 @@
+{
+  "schema_version": "structured-rubric-v1",
+  "title": "Case 1 评分标准",
+  "background": "从报告标注开始逐步构建的评分标准。",
+  "language": "zh",
+  "base_score": 100.0,
+  "criteria": []
+}

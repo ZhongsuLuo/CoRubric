@@ -1,0 +1,35 @@
+[project]
+name = "grading"
+version = "0.1.0"
+description = "Progressive grading backend and PDF conversion tools"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "alibabacloud-docmind-api20220711==1.4.15",
+    "dashscope",
+    "fastapi",
+    "httpx>=0.28,<0.29",
+    "openai",
+    "pillow",
+    "pydantic",
+    "pymupdf",
+    "python-docx>=1.2.0",
+    "python-dotenv",
+    "python-multipart",
+    "pywin32>=312 ; sys_platform == 'win32'",
+    "uvicorn",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest==7.4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not local_data'"
+markers = ["local_data: checks requiring private local demo data (run explicitly)"]
+norecursedirs = ["history", ".venv", "node_modules"]
